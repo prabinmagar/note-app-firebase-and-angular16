@@ -1,0 +1,40 @@
+<div class="pg-form flex items-center justify-center">
+  <div class="form-wrapper">
+    <div class="form-title text-center">
+      <h3>Login into your account.</h3>
+      <p class="mx-auto">Please login here to use our note taking application. No fee required.</p>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-elem-group-full">
+        <div class="form-elem">
+          <span class="form-placeholder">Username or email</span>
+          <input type="email" class="form-control w-full h-full" placeholder="Username or email" formControlName="email" [ngClass]="{'is-invalid': fc['email'].touched && fc['email'].invalid}">
+          <div class="form-text" *ngIf="fc['email'].hasError('required')">
+            <span *ngIf="fc['email'].touched && fc['email'].invalid">Email is required.</span>
+          </div>
+          <div class="form-text" *ngIf="fc['email'].hasError('email')">
+            <span *ngIf="fc['email'].touched && fc['email'].invalid">Invalid email address.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-elem-group-full">
+        <div class="form-elem">
+          <span class="form-placeholder">Password</span>
+          <input type="password" class="form-control w-full h-full" placeholder="Password" formControlName="password" [ngClass]="{'is-invalid': fc['password'].touched && fc['password'].invalid}">
+          <div class="form-text" *ngIf="fc['password'].hasError('required')">
+            <span *ngIf="fc['password'].touched && fc['password'].invalid">Password is required.</span>
+          </div>
+          <div class="form-text" *ngIf="fc['password'].hasError('pattern')">
+            <span *ngIf="fc['password'].touched && fc['password'].invalid">Password criteria didn't match.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-btns flex items-center">
+        <a routerLink="/register" class="form-btn">Register Here!</a>
+        <button type="submit" class="form-btn">Login</button>
+      </div>
+    </form>
+  </div>
+</div>

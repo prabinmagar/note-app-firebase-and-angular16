@@ -1,0 +1,22 @@
+@import "../../../../../styles.scss";
+
+.footer{
+  background-color: #1B1F24;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px 18px;
+}
+.breadcrumb{
+  font-size: 15px;
+  opacity: 0.9;
+
+  .item-separator{
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+
+  &-item{
+    &:last-child{
+      color: $clr-gray;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import "../../../styles.scss";
+
+.app-holder{
+  min-height: 100vh;
+}
+.app-content{
+  flex: 1;
+
+  &-wrapper{
+    height: 100%;
+  }
+}
+
+
+@media screen and (max-width: 992px){
+  .app-content-wrapper{
+    flex-direction: column;
+  }
+}

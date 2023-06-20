@@ -1,0 +1,81 @@
+<div class="note-detail">
+  <div class="note-detail-head flex items-center justify-between">
+    <div class="detail-head-l">
+      <i class="bi bi-layout-text-window"></i>
+    </div>
+    <div class="detail-head-r flex items-center">
+      <div class="icons-group flex items-center">
+        <div class="option-btn-wrapper">
+          <button type="button" class="option-btn">
+            <i class="bi bi-three-dots"></i>
+          </button>
+        </div>
+        <button type="button">
+          <i class="bi bi-list-check"></i>
+        </button>
+        <button type="button">
+          <i class="bi bi-info-circle"></i>
+        </button>
+      </div>
+
+      <button type="button" class="profile-btn text-white"><span class="uppercase">{{ userData.data?.firstName.charAt(0) }}</span>
+        <div class="profile-modal flex flex-col justify-between modal">
+          <div class="profile-items">
+            <div class="profile-item flex items-center justify-between">
+              <span class="profile-item-text">{{ userData.data?.firstName }} {{ userData.data?.lastName }} </span>
+              <span class="profile-item-icon">
+                <i class="bi bi-person-circle"></i>
+              </span>
+            </div>
+
+            <div class="profile-item flex items-center justify-between">
+              <span class="profile-item-text">{{ userData.data?.email }}</span>
+              <span class="profile-item-icon">
+                <i class="bi bi-envelope"></i>
+              </span>
+            </div>
+
+            <div class="profile-item flex items-center justify-between">
+              <span class="profile-item-text">{{ userData.data?.address }}</span>
+              <span class="profile-item-icon">
+                <i class="bi bi-compass"></i>
+              </span>
+            </div>
+          </div>
+
+          <button class="profile-item flex items-center justify-between modal-close-btn text-white" (click)="onLogout()">
+            <span class="profile-item-text">Log out</span>
+            <span class="profile-item-icon">
+              <i class="bi bi-box-arrow-left"></i>
+            </span>
+          </button>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div class="note-detail-main">
+    <div class="note-detail-actions">
+      <button type="button" class="note-action-btn text-white" (click)="onDelete(authService.loggedInUserData[0].id, notePreviewData.id)">
+        <i class="bi bi-trash"></i>
+      </button>
+      <button type="button" class="note-action-btn text-white" (click)="onEdit(authService.loggedInUserData[0].id, notePreviewData?.id)">
+        <i class="bi bi-pencil-square"></i>
+      </button>
+    </div>
+    <div *ngIf="!notePreviewData">
+      <h2>Welcome to Super Notes</h2>
+      <p>Super Notes is an easy way to notes, create to Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore enim cum recusandae animi deleniti. Repellat nisi iusto sed cum quisquam voluptatem tempora minima sequi corporis!</p>
+      <h4>Markdown</h4>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto corrupti voluptatum expedita modi temporibus, explicabo natus quasi saepe inventore fugit? Cum officiis exercitationem molestiae fugit sit magni deserunt, minima repellat tenetur assumenda, unde omnis beatae, voluptatibus voluptatum reprehenderit suscipit nisi dolorem autem vero quae aliquam vel blanditiis! Distinctio sunt, repudiandae odit nulla molestias magni, quis magnam ducimus vel exercitationem impedit.</p>
+      <h4>Pinned Notes</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora veniam, voluptatibus recusandae consequuntur ex dolores! Consectetur inventore voluptatem earum officia illum nesciunt eius voluptatibus temporibus laudantium non! Iste iure officia consequuntur nemo rem facilis soluta, ea molestiae <a href="#">delectus maiores necessitatibus</a>.</p>
+    </div>
+    <div *ngIf="notePreviewData">
+      <h2>{{ notePreviewData.data.title }}</h2>
+      <div [innerHTML]="notePreviewData.data.content"></div>
+    </div>
+  </div>
+
+  <app-note-form *ngIf="isModalOpen" (closeModal)="hideModal()"></app-note-form>
+</div>

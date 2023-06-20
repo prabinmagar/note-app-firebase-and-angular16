@@ -1,0 +1,31 @@
+<div class="modal note-form">
+  <div class="form-wrapper">
+    <button type="button" class="modal-close-btn text-white" (click)="onModalClose()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    <div class="form-title text-center">
+      <h3>{{ formText }} Note</h3>
+    </div>
+    <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+      <div class="form-elem-group-full">
+        <label for="">Note Title :</label>
+        <div class="form-elem">
+          <input type="text" class="form-control w-full h-full" placeholder="Your note title here." formControlName="title" [ngClass]="{'is-invalid': fc['title'].touched && fc['title'].invalid}">
+          <div class="form-text" *ngIf="fc['title'].hasError('required')">
+            <span *ngIf="fc['title'].touched && fc['title'].invalid">Note title is required.</span>
+          </div>
+        </div>
+      </div>
+
+      <angular-editor [placeholder]="'Your note details here ...'" formControlName="content" [config]="editorConfig"></angular-editor>
+      <div *ngIf="fc['content'].hasError('required')">
+        <span class="angular-editor-error" *ngIf="fc['content'].touched && fc['content'].invalid">Note content is required.</span>
+      </div>
+
+      <div class="form-btns flex items-center">
+        <button type="button" class="form-btn" (click)="onClear()">Clear</button>
+        <button type="submit" class="form-btn">{{ formText }} Note</button>
+      </div>
+    </form>
+  </div>
+</div>

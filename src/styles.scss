@@ -1,1 +1,290 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import 'ngx-toastr/toastr';
+
+$clr-bittersweet: #FD605E;
+$clr-xhanthous: #FBBB40;
+$clr-pastel-green: #32C649;
+$clr-eerie-black: #1D2328;
+$clr-charcoal: #353F45;
+$clr-gray: #9da2a7;
+$clr-white: #fff;
+$clr-black: #181C1F;
+$clr-malachite: #5DDD71;
+$transition-default: all 300ms ease-in-out;
+$font-family-poppins: 'Poppins', sans-serif;
+
+// global styles & resets
+*,
+*::after,
+*::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+html{
+  font-size: 10px;
+}
+body{
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-family: $font-family-poppins;
+  color: $clr-white;
+  letter-spacing: 0.5px;
+}
+
+ul{
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+  color: unset;
+}
+h1, h2, h3, h4, h5, h6{
+  text-transform: capitalize;
+}
+img{
+    width: 100%;
+    display: block;
+}
+.img-cover{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+button{
+    cursor: pointer;
+    outline: 0;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 1.8rem;
+}
+input, textarea, select{
+    outline: 0;
+    border: none;
+    resize: none;
+    font-family: inherit;
+    font-size: 1.6rem;
+}
+
+/* custom utility classes */
+.container{
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* flexbox and grid */
+.flex{
+    display: flex;
+    &-col{ flex-direction: column;}
+    &-wrap{flex-wrap: wrap;}
+    &-1{flex: 1;}
+}
+.items{
+    &-center{align-items: center;}
+    &-start{align-items: flex-start;}
+    &-end{align-items: flex-end;}
+    &-stretch{align-items: stretch;}
+    &-baseline{align-items: baseline;}
+}
+.justify{
+    &-center{justify-content: center;}
+    &-between{ justify-content: space-between;}
+    &-start{ justify-content: flex-start;}
+    &-end{ justify-content: flex-end;}
+    &-around{justify-content: space-around;}
+    &-stretch{justify-content: stretch;}
+}
+.grid{ display: grid; }
+
+/* height and width */
+.h-full{height: 100%;}
+.w-full{width: 100%;}
+
+/* text align and transformation */
+.text{
+  &-center{text-align: center;}
+  &-start{text-align: left;}
+  &-end{text-align: right;}
+  &-justify{text-align: justify;}
+  &-white{color: $clr-white;}
+  &-black{color: $clr-black;}
+  &-gray{color: $clr-gray;}
+}
+
+.uppercase{text-transform: uppercase;}
+.capitalize{text-transform: capitalize;}
+.lowercase{text-transform: lowercase;}
+.italic{font-style: italic;}
+
+.bg{
+  &-white{background-color: $clr-white;}
+  &-black{background-color: $clr-black;}
+}
+
+.mx-auto{
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+// forms
+.pg-form{
+  background-color: $clr-black;
+  min-height: 100vh;
+
+  form{
+    margin-top: 32px;
+  }
+}
+
+.form-wrapper{
+  max-width: 520px;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  padding: 36px 20px;
+  padding: 36px 20px;
+  background-color: $clr-black;
+  position: relative;
+  z-index: 1;
+
+  .form-title h3{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .form-title p{
+    color: $clr-gray;
+    font-size: 14px;
+    max-width: 320px;
+  }
+
+  .form-elem-group{
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+  }
+
+  .form-elem-group-full{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin-bottom: 24px;
+  }
+
+  .form-placeholder{
+    position: absolute;
+    top: -11px;
+    left: 14px;
+    background-color: $clr-black;
+    padding-left: 4px;
+    padding-right: 4px;
+    opacity: 0;
+    transition: $transition-default;
+    font-size: 12px;
+  }
+
+  label{
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .form-elem{
+    border: 2px solid $clr-eerie-black;
+    background-color: $clr-eerie-black;
+    position: relative;
+    height: 44px;
+    border-radius: 10px;
+
+    input, textarea{
+      background-color: transparent;
+      padding-right: 18px;
+      padding-left: 18px;
+      caret-color: $clr-white;
+      color: $clr-white;
+      font-size: 14px;
+
+      &::placeholder{
+        transition: $transition-default;
+        color: $clr-gray;
+      }
+
+      &:focus{
+        &::placeholder{
+          opacity: 0;
+        }
+      }
+    }
+
+    &:has(textarea){
+      height: 96px;
+      textarea{
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+    }
+
+    &:has(input:focus), &:has(textarea:focus){
+      background-color: transparent;
+
+      .form-placeholder{
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.form-btns{
+  .form-btn{
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+    padding: 6px 8px;
+    text-align: center;
+    transition: $transition-default;
+    color: $clr-white;
+
+    &:first-child{
+      width: 30%;
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+
+    &:last-child{
+      width: 70%;
+      margin-left: 16px;
+      background-color: #289D3A;
+      border-color: #289D3A;
+      color: $clr-white;
+      font-weight: 500;
+
+      &:hover{
+        background-color: #249035;
+      }
+    }
+  }
+}
+
+.form-placeholder{
+  font-size: 14px;
+  color: $clr-gray;
+  transition: $transition-default;
+}
+
+.form-text{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: calc(100% + 3px);
+  color: #bb321f;
+  font-size: 10px;
+}
+
+.is-invalid{
+  border: 1px solid #bb321f!important;
+  border-radius: 10px;
+}

@@ -1,0 +1,87 @@
+<div class="pg-form flex items-center justify-center">
+  <div class="form-wrapper">
+    <div class="form-title text-center">
+      <h3>Create your account.</h3>
+      <p class="mx-auto">Please register here to use our note taking application. No fee required.</p>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-elem-group">
+        <div class="form-elem">
+          <span class="form-placeholder">First Name</span>
+          <input type="text" class="form-control w-full h-full" placeholder="First Name" formControlName="firstName" [ngClass]="{'is-invalid': fc['firstName'].touched && fc['firstName'].invalid}">
+          <div class="form-text" *ngIf="fc['firstName'].hasError('required')">
+            <span *ngIf="fc['firstName'].touched && fc['firstName'].invalid">First Name is required.</span>
+          </div>
+        </div>
+        <div class="form-elem">
+          <span class="form-placeholder">Last Name</span>
+          <input type="text" class="form-control w-full h-full" placeholder="Last Name" formControlName="lastName" [ngClass]="{'is-invalid': fc['lastName'].touched && fc['lastName'].invalid}">
+          <div class="form-text" *ngIf="fc['lastName'].hasError('required')">
+            <span *ngIf="fc['lastName'].touched && fc['lastName'].invalid">Last Name is required.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-elem-group-full">
+        <div class="form-elem">
+          <span class="form-placeholder">Username or email</span>
+          <input type="email" class="form-control w-full h-full" placeholder="Username or email" formControlName="email" [ngClass]="{'is-invalid': fc['email'].touched && fc['email'].invalid}">
+          <div class="form-text" *ngIf="fc['email'].hasError('required')">
+            <span *ngIf="fc['email'].touched && fc['email'].invalid">Email is required.</span>
+          </div>
+          <div class="form-text" *ngIf="fc['email'].hasError('email')">
+            <span *ngIf="fc['email'].touched && fc['email'].invalid">Invalid email address.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-elem-group">
+        <div class="form-elem">
+          <span class="form-placeholder">Password</span>
+          <input type="password" class="form-control w-full h-full" placeholder="Password" formControlName="password" [ngClass]="{'is-invalid': fc['password'].touched && fc['password'].invalid}">
+          <div class="form-text" *ngIf="fc['password'].hasError('required')">
+            <span *ngIf="fc['password'].touched && fc['password'].invalid">Password is required.</span>
+          </div>
+          <div class="form-text" *ngIf="fc['password'].hasError('pattern')">
+            <span *ngIf="fc['password'].touched && fc['password'].invalid">Password criteria didn't match.</span>
+          </div>
+        </div>
+        <div class="form-elem">
+          <span class="form-placeholder">Confirm Password</span>
+          <input type="password" class="form-control w-full h-full" placeholder="Confirm Password" formControlName="confirmPassword" [ngClass]="{'is-invalid': fc['confirmPassword'].touched && fc['confirmPassword'].invalid}">
+          <div class="form-text" *ngIf="fc['confirmPassword'].hasError('required')">
+            <span *ngIf="fc['confirmPassword'].touched && fc['confirmPassword'].invalid">Password is required.</span>
+          </div>
+          <div class="form-text" *ngIf="fc['confirmPassword'].hasError('pattern')">
+            <span *ngIf="fc['confirmPassword'].touched && fc['confirmPassword'].invalid">Password criteria didn't match.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-elem-group-full">
+        <div class="form-elem">
+          <span class="form-placeholder">Address</span>
+          <input type="text" class="form-control w-full h-full" placeholder="Address" formControlName="address" [ngClass]="{'is-invalid': fc['address'].touched && fc['address'].invalid}">
+          <div class="form-text" *ngIf="fc['address'].hasError('required')">
+            <span *ngIf="fc['address'].touched && fc['address'].invalid">Address is required.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-elem-group-full">
+        <div class="form-elem">
+          <span class="form-placeholder">Tell us about yourself ...</span>
+          <textarea class="form-control w-full h-full" placeholder="Tell us about yourself ..." formControlName="about" [ngClass]="{'is-invalid': fc['about'].touched && fc['about'].invalid}"></textarea>
+          <div class="form-text" *ngIf="fc['about'].hasError('required')">
+            <span *ngIf="fc['about'].touched && fc['about'].invalid">About is required.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-btns flex items-center">
+        <a href="/" class="form-btn">Log in</a>
+        <button type="submit" class="form-btn">Create account</button>
+      </div>
+    </form>
+  </div>
+</div>

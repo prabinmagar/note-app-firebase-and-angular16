@@ -1,0 +1,184 @@
+@import "../../../styles.scss";
+
+.note-detail{
+  background-color: $clr-black;
+  height: 100%;
+
+  &-main{
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    height: 600px;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $clr-charcoal;
+      border-radius: 24px;
+    }
+  }
+
+  &-head{
+    height: 60px;
+    padding: 24px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .detail-head-l{
+    color: $clr-gray;
+  }
+
+  .icons-group button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $clr-gray;
+    width: 32px;
+    margin-right: 2px;
+    margin-left: 2px;
+    transition: $transition-default;
+
+    &:hover{
+      color: $clr-white;
+    }
+  }
+
+  .option-btn{
+    &-wrapper{
+      position: relative;
+    }
+  }
+
+  .profile-btn{
+    position: relative;
+  }
+
+  .option-modal,.profile-modal{
+    position: absolute;
+    right: 10px;
+    top: 24px;
+    width: 200px;
+    height: 260px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background-color: #1D2328;
+    z-index: 5;
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition-default;
+
+    &.show{
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .profile-modal{
+    top: calc(100% + 10px);
+  }
+
+  .option-items, .profile-items{
+    padding: 14px 6px;
+  }
+
+  .option-item, .profile-item{
+    padding: 6px 10px;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover{
+      opacity: 0.6;
+    }
+  }
+  .option-item-text, .profile-item-text{
+    font-size: 12px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
+    max-width: 142px;
+  }
+  .option-item-icon, .profile-item-icon{
+    font-size: 14px;
+  }
+
+  .modal-close-btn{
+    padding: 10px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover{
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .profile-btn{
+    width: 36px;
+    height: 36px;
+    background-color: $clr-bittersweet;
+    border-radius: 100%;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 20px;
+  }
+
+  .note-detail-main{
+    padding: 24px 18px;
+
+    h1, h2, h3, h4, h5, h6{
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    p{
+      font-size: 15px;
+      font-weight: 300;
+      opacity: 0.8;
+    }
+    a{
+      color: $clr-xhanthous;
+      text-decoration: underline;
+    }
+  }
+
+  .note-detail-actions{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+    .note-action-btn{
+      margin-right: 14px;
+      color: $clr-gray;
+      transition: $transition-default;
+
+      &:hover{
+        color: $clr-white;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 992px){
+  .note-detail{
+    &-head{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: $clr-black;
+    }
+
+    &-main{
+      height: 400px;
+    }
+  }
+}

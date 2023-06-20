@@ -1,0 +1,10 @@
+- users (collection)
+  - userId (document)
+    - username: string
+    - email: string
+    - notes (collection)
+      - noteId (document)
+        - title: string
+        - content: string
+        - createdAt: timestamp
+        - updatedAt: timestamp

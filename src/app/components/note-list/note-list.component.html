@@ -1,0 +1,38 @@
+<div class="note-list">
+  <div class="note-list-head flex items-center justify-between">
+    <button type="button" class="sidebar-toggle-btn">
+      <i class="bi bi-list"></i>
+    </button>
+    <div class="note-list-title">All Notes</div>
+    <button type="button" class="add-note-btn text-white" (click)="showModal()">
+      <i class="bi bi-plus"></i>
+    </button>
+  </div>
+  <div class="note-list-search">
+    <div class="search-group flex items-center">
+      <div type="submit" class="search-btn text-gray">
+        <i class="bi bi-search"></i>
+      </div>
+      <input type="text" class="search-control w-full" placeholder="Search all notes and tags" [(ngModel)]="keyword" (input)="searchNotes()" />
+    </div>
+  </div>
+
+  <div class="note-list-main">
+    <div class="note-items">
+      <div class="note-item intro">
+        <span class="note-item-icon">
+          <i class="bi bi-journals"></i>
+        </span>
+        <div class="note-item-title">Welcome to Super Notes</div>
+        <p class="note-item-text">Super Notes is an easy way to take notes, create to ...</p>
+      </div>
+
+      <div class="note-item" [ngClass]="{'selected-note': note.id == this.noteService.notePreviewData?.id}" *ngFor="let note of notes" (click)="selectNote(note)">
+        <div class="note-item-title">{{ note.data.title }}</div>
+        <p class="note-item-text" [innerHTML]="note.data.content.slice(0, 50) + '&nbsp;...'"></p>
+      </div>
+    </div>
+  </div>
+
+  <app-note-form *ngIf="isModalOpen" (closeModal)="hideModal()"></app-note-form>
+</div>

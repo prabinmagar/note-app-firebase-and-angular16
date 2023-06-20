@@ -1,0 +1,11 @@
+<main class="app-holder flex">
+  <app-sidebar></app-sidebar>
+  <div class="app-content flex flex-col">
+    <div class="flex app-content-wrapper">
+      <app-note-list (noteSelected)="updateNotePreview($event)"></app-note-list>
+      <app-note-detail [notePreviewData]="noteService.notePreviewData" class="flex-1"></app-note-detail>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</main>
+

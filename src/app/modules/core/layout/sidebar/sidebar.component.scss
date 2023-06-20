@@ -1,0 +1,106 @@
+@import "../../../../../styles.scss";
+
+.sidebar{
+  width: 260px;
+  background-color: $clr-eerie-black;
+  height: 100%;
+  transition: $transition-default;
+
+  &-change{
+    margin-left: -260px;
+  }
+
+  &-head{
+    height: 60px;
+    padding: 24px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .logo{
+    &-circle{
+      width: 12px;
+      height: 12px;
+      border-radius: 100%;
+      margin-right: 8px;
+
+      &:nth-child(1){
+        background-color: $clr-bittersweet;
+      }
+
+      &:nth-child(2){
+        background-color: $clr-xhanthous;
+      }
+
+      &:nth-child(3){
+        background-color: $clr-pastel-green;
+        margin-right: 0;
+      }
+    }
+  }
+
+  &-main{
+    padding: 24px 18px;
+  }
+
+  .nav-link{
+    padding: 6px 14px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 30px auto;
+    color: $clr-gray;
+    transition: $transition-default;
+  }
+  .nav-link.active{
+    background-color: $clr-charcoal;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 7px 15px 0px;
+    border-radius: 8px;
+    color: $clr-white;
+    opacity: 0.9;
+  }
+  .nav-link:hover{
+    color: $clr-white;
+    opacity: 0.9;
+  }
+  .nav-item{
+    margin-bottom: 14px;
+  }
+  .nav-link-text{
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  // tags
+  .tags{
+    margin-top: 40px;
+  }
+  .tags-head{
+    margin-bottom: 16px;
+  }
+  .tags-head-text{
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: $clr-gray;
+    text-transform: uppercase;
+  }
+  .tags-edit-btn{
+    color: $clr-xhanthous;font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .tags-list{
+    li{
+      margin-bottom: 8px;
+      opacity: 0.8;
+    }
+  }
+}
+
+
+@media screen and (max-width: 992px){
+  .sidebar{
+    margin-left: -260px;
+
+    &-change{
+      margin-left: 0;
+    }
+  }
+}
